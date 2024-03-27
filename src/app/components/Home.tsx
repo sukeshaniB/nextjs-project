@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="flex justify-between items-center h-16  dark:bg-gray-800 px-4">
       {/* Sports logo */}
-      <b className={`absolute left-[120px] top-[20px] text-4xl font-bold ${isDarkMode ? 'dark:text-white' : 'text-black'} border-b-2 border-blue-500`}>Sports</b>
+      <b className={`absolute left-[186px] top-[50px] text-3xl font-bold ${isDarkMode ? 'dark:text-white' : 'text-black'} border-b-2 border-blue-500`}>Sports</b>
       {/* Toggle button */}
       <div
         className={`relative flex items-center cursor-pointer border border-gray-400 rounded-full p-1 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'}`}
