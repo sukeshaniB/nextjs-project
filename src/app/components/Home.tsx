@@ -28,6 +28,7 @@ interface AdvertisementCardProps {
   imageSrc: string;
   title: string;
   description: string;
+  isDarkMode: boolean;
 }
 
 const cardsData: CardData[] = [
@@ -71,7 +72,7 @@ const cardsData: CardData[] = [
     type: 'advertisement',
     top: '66px',
     left: '-449.2px',
-    imageSrc: '/images/poster.png',
+    imageSrc: '/images/player5.png',
     title: 'Advertisement Title',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
@@ -102,16 +103,16 @@ const Card: React.FC<CardProps> = ({ top, left, events, sport, imageSrc, title, 
   );
 };
 
-const AdvertisementCard: React.FC<AdvertisementCardProps> = ({ top, left, imageSrc, title, description }) => {
+const AdvertisementCard: React.FC<AdvertisementCardProps> = ({ top, left, imageSrc, title, description, isDarkMode }) => {
   return (
-    <div className="absolute" style={{ top, left }}>
-      <div className="absolute top-[0px] left-[1000px] bg-white dark:bg-gray-800 shadow-[0px_4px_8px_rgba(0,_0,_0,_0.05)] w-[238.5px] h-[511px]"></div>
-      <div className="absolute top-[10px] left-[10px] w-[218.4px] dark:bg-gray-800 h-[491px]">
-        <div className="absolute top-[0px] left-[0px] dark:bg-gray-800 bg-white box-border w-[218.4px] h-[491px] border-[0.2px] border-solid dark:border-none  border-teal"></div>
+    <div className={`absolute ${isDarkMode ? 'dark:bg-gray-800' : 'bg-white'}`} style={{ top, left }}>
+      <div className={`absolute top-[0px] left-[1000px] ${isDarkMode ? 'bg-white dark:bg-gray-800' : 'bg-white'} shadow-[0px_4px_8px_rgba(0,_0,_0,_0.05)] `}></div>
+      <div className={`absolute top-[10px] left-[10px] w-[218.4px] ${isDarkMode ? 'dark:bg-gray-800' : 'bg-white'} h-[491px]`}>
+        <div className={`absolute top-[0px] left-[0px] ${isDarkMode ? 'dark:bg-gray-800' : 'bg-white'} box-border w-[218.4px] h-[491px] border-[0.2px] border-solid ${isDarkMode ? 'dark:border-none' : 'border-teal'}`}></div>
         <img className="absolute top-[0px] left-[0px] w-[218.4px] h-[218px] object-cover" alt="" src={imageSrc} />
-        <div className="absolute top-[246px] dark:bg-gray-800 left-[15.1px] dark:text-white  text-xl font-semibold inline-block w-[188.2px]">{title}</div>
-        <div className="absolute top-[278px] dark:bg-gray-800 dark:text-white left-[15.1px] leading-[19px] text-dimgray inline-block w-[188.3px]">{description}</div>
-        <div className="absolute top-[0px] left-[170.3px]  dark:bg-gray-800  bg-black w-[48.1px] flex flex-col items-center justify-center py-[3px] px-[15px] box-border text-white"><b className="relative  dark:text-white  leading-[19px]">Ad</b></div>
+        <div className={`absolute top-[246px] ${isDarkMode ? 'dark:bg-gray-800' : 'bg-white'} left-[15.1px] ${isDarkMode ? 'dark:text-white' : 'text-black'} text-xl font-semibold inline-block w-[200.2px]`}>{title}</div>
+        <div className={`absolute top-[278px] ${isDarkMode ? 'dark:bg-gray-800' : 'bg-white'} ${isDarkMode ? 'dark:text-white' : 'text-black'} left-[14.1px] leading-[16px] text-dimgray inline-block w-[200.3px]`}>{description}</div>
+        <div className={`absolute top-[0px] left-[170.3px] ${isDarkMode ? 'dark:bg-gray-800' : 'bg-black'} w-[48.1px] flex flex-col items-center justify-center py-[3px] px-[15px] box-border text-white`}><b className="relative  ${isDarkMode ? 'dark:text-white' : 'text-black'}  leading-[19px]">Ad</b></div>
       </div>
     </div>
   );
@@ -174,6 +175,7 @@ const Home: React.FC = () => {
                 imageSrc={card.imageSrc!}
                 title={card.title!}
                 description={card.description!}
+                isDarkMode={isDarkMode}
               />
             );
           }
